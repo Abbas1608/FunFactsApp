@@ -1,10 +1,12 @@
 package com.example.funfacts.ui.theme
 
 import android.annotation.SuppressLint
+import android.renderscript.Sampler.Value
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -198,7 +200,7 @@ fun ButtonComponenent(
         modifier = Modifier.fillMaxWidth(),
         onClick = { goToDetailsScreen()
         /*TODO*/ }) {
-        TextComponent(textValue = "Got to Detail screen",
+        TextComponent(textValue = "Go to Detail screen",
             textsize = 18.sp
         , colorvalue = Color.White
         )
@@ -218,4 +220,29 @@ fun TextWidthShadow(value: String) {
         )
     )
 
+}
+
+@Composable
+fun FactComposable(value: String) {
+    Card(modifier = Modifier
+        .padding(32.dp)
+        .fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ){
+    Column(modifier = Modifier.padding(18.dp,24.dp))
+    {
+        Spacer(modifier = Modifier.size(24.dp))
+
+        TextWidthShadow(value = value)
+
+        Spacer(modifier = Modifier.size(24.dp))
+
+    }
+    }
+}
+@Preview
+@Composable
+fun FactComposablePreview() {
+    FactComposable(value = "ABCDEFS")
 }

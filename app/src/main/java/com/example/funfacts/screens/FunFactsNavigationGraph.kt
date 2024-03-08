@@ -12,11 +12,11 @@ import com.example.funfacts.ui.theme.UserInputViwModel
 
 private val NavBackStackEntry.first: String
     get() {
-        TODO("Not yet implemented")
+        TODO(" yet implemented")
     }
 private val NavBackStackEntry.second: String
     get() {
-        TODO("Not yet implemented")
+        TODO(" yet implemented")
     }
 
 
@@ -28,12 +28,12 @@ fun FunFactsNavigationGraph(userInputViwModel: UserInputViwModel = viewModel()) 
 
         composable(Routes.USERINPUTSCREES) {
 
-            UserInputScreens(userInputViwModel) {
+            UserInputScreens(userInputViwModel, ShowWelcomeScreens ={
                 println("Coming_inside_showWelcomeScreen")
                 println(it.first)
                 println(it.second)
                 navController.navigate(Routes.WELCOMESCREENS+ "/${it.first}/${it.second}")
-            }
+            })
         }
 
         composable("${Routes.WELCOMESCREENS}/ {${Routes.USER_NAME}}/{${Routes.ANIMAL_SELECTED}}",
@@ -51,3 +51,5 @@ fun FunFactsNavigationGraph(userInputViwModel: UserInputViwModel = viewModel()) 
 
     }
 }
+
+

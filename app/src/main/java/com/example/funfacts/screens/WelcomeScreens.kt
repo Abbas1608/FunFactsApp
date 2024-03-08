@@ -14,6 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.funfacts.ui.theme.FactComposable
+import com.example.funfacts.ui.theme.FactsViewModel
 import com.example.funfacts.ui.theme.TextComponent
 import com.example.funfacts.ui.theme.TextWidthShadow
 import com.example.funfacts.ui.theme.Topbar
@@ -37,15 +40,18 @@ fun WelcomeScreens(username: String?, animalselected: String?) {
 
             val finalText = if (
                 animalselected== "Cat") "You are a Cat lover \uD83D\uDC36" else "You are a Dog lover"
-TextWidthShadow(value = finalText)
+            TextWidthShadow(value = finalText)
+            val factsViewModel : FactsViewModel = viewModel()
+            FactComposable(
+                value = factsViewModel.generatRomdomFact(animalselected!!)
+            )
+
+
         }
 }
 }
 
-fun Column(modifier: Modifier) {
 
-
-}
 
 @Preview
 @Composable
